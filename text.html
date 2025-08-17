@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surga Cinta di Halaman Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap');
+        
+        :root {
+            --primary-color: #ff6b8b;
+            --secondary-color: #ffb8c6;
+            --dark-color: #5a2a27;
+            --light-color: #fff9fb;
+            --accent-color: #ff3860;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .header-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .quote-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .quote-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quote-box::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: var(--secondary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quote-author {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .interactive-section {
+            padding: 60px 0;
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .heart-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .heart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-color: var(--primary-color);
+        }
+        
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        .heart-animation {
+            position: fixed;
+            pointer-events: none;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 300px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .quote-text {
+                font-size: 1.4rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76a92369-b5ae-4772-bf27-f1f47b658da3.png" alt="Pasangan berpegangan tangan di pantai saat matahari terbenam dengan warna langit oranye dan merah muda" />
+        </div>
+        <div class="container">
+            <h1>Surga Cinta di Halaman Digital</h1>
+            <p>Temukan kata-kata yang menyentuh jiwa dan memanaskan hati dalam perjalanan cintamu</p>
+        </div>
+    </header>
+    
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-box">
+                    <p class="quote-text">Cinta itu seperti angin, kau tak bisa melihatnya tapi kau bisa merasakannya.</p>
+                    <p class="quote-author">- Nicholas Sparks</p>
+                </div>
+                
+                <div class="quote-box">
+                    <p class="quote-text">Dalam cinta yang sejati, terkadang kita harus menjauh untuk mengerti seberapa besar kita saling membutuhkan.</p>
+                    <p class="quote-author">- Tere Liye</p>
+                </div>
+                
+                <div class="quote-box">
+                    <p class="quote-text">Cinta bukan tentang memiliki orang yang sempurna. Tapi tentang menemukan orang yang tidak sempurna dengan cara yang sempurna.</p>
+                    <p class="quote-author">- Sam Keen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="interactive-section">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 20px;">Bagikan Cintamu pada Dunia</h2>
+            <p style="color: white; max-width: 600px; margin: 0 auto 30px;">Tekan tombol hati untuk menciptakan keindahan bersama</p>
+            <button class="heart-btn" id="heartBtn">
+                <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                Kirim Cinta
+            </button>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Kenapa Selalu Tersakiti</p>
+            <p style="margin-top: 10px;">Jadikan setiap hari sebagai kesempatan untuk mencintai dan dicintai.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('heartBtn').addEventListener('click', function() {
+            // Create floating hearts
+            for (let i = 0; i < 10; i++) {
+                createHeart();
+            }
+            
+            // Show message
+            setTimeout(() => {
+                alert('Cintaku Hanya Kepada M❤️');
+            }, 1000);
+        });
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart-animation');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
+
